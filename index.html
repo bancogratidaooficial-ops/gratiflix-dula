@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G GRATIDÃO V85 YOUTUBE</title>
+<meta name="theme-color" content="#FFD700">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial}
+body{background:#0f0f0f;color:#fff;padding-bottom:110px}
+.top{background:#FFD700;color:#000;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-weight:900;position:sticky;top:0;z-index:20;font-size:18px}
+.search{display:flex;gap:8px;padding:12px}
+.search input{flex:1;padding:16px;border-radius:14px;background:#1e1e1e;color:#fff;border:1px solid #333;outline:none}
+.btnS{background:#FFD700;border:none;border-radius:14px;padding:0 20px;font-size:22px}
+.menuTop{display:flex;gap:8px;padding:0 12px 12px}
+.menuTop button{flex:1;padding:13px;border-radius:22px;border:none;font-weight:900;font-size:13px}
+.verde{background:#00E676}.branco{background:#fff}.amarelo{background:#FFD700}
+.gridPastas{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
+.cardPasta{background:#1a1a1a;border-radius:20px;padding:10px;border:1px solid #2a2a2a;position:relative;min-height:200px;display:flex;flex-direction:column;justify-content:space-between}
+.lixeira{position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;background:#b71c1c;border:none;color:#fff}
+.emojiBig{font-size:55px;text-align:center;margin:30px 0 10px}
+.nomePasta{font-weight:900;font-size:14px;display:flex;align-items:center;gap:6px}
+.subPasta{color:#888;font-size:12px;margin:2px 0 8px}
+.btnAbrir{background:#FFD700;color:#000;width:100%;padding:10px;border:none;border-radius:10px;font-weight:900;font-size:12px}
+.gridFilmes{display:grid;grid-template-columns:1fr;gap:10px;padding:12px}
+.cardFilme{background:#1e1e1e;border-left:4px solid #FFD700;border-radius:16px;padding:12px;display:flex;gap:10px;align-items:center}
+.cardFilme img{width:60px;height:60px;border-radius:10px;object-fit:cover;background:#111}
+.barraBottom{position:fixed;bottom:0;left:0;right:0;background:#111;display:flex;gap:6px;padding:10px;border-top:2px solid #FFD700;overflow:auto;z-index:30}
+.barraBottom button{padding:12px 12px;border-radius:22px;border:none;font-weight:900;font-size:11px;white-space:nowrap}
+.ads{text-align:center;padding:14px;color:#555;font-size:13px;border-top:1px solid #222;margin-top:10px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.93);display:none;align-items:center;justify-content:center;z-index:100;padding:15px}
+.modal.open{display:flex}
+.box{background:#1f1f1f;border-radius:20px;padding:18px;width:100%;max-width:380px;border:2px solid #FFD700;max-height:92vh;overflow:auto}
+.box h3{color:#FFD700;text-align:center;margin-bottom:10px}
+.box input,.box select{width:100%;padding:13px;border-radius:12px;border:1px solid #333;background:#111;color:#fff;margin:6px 0}
+.box label{font-size:11px;color:#FFD700;font-weight:900;margin-top:8px;display:block}
+.row{display:flex;gap:8px;margin-top:10px}.row button{flex:1;padding:13px;border-radius:12px;border:none;font-weight:900}
+.btnSave{background:#FFD700;color:#000}.btnCancel{background:#333;color:#fff}
+.fab{position:fixed;bottom:85px;right:15px;width:56px;height:56px;border-radius:50%;background:#FFD700;border:none;font-size:26px;z-index:25}
+</style>
+</head>
+<body>
+<div class="top"><span>G GRATIDÃO V85 YOUTUBE 🤖</span><span>🤖 IA</span></div>
+<div class="search"><input id="busca" placeholder="Pesquisar pasta..." oninput="filtrarPastas()"><button class="btnS">🔍</button></div>
+<div class="menuTop">
+<button class="verde" onclick="convidar()">📲 Convidar</button>
+<button class="branco" onclick="apoiar()">⭐ Apoiar</button>
+<button class="amarelo" onclick="ia()">🤖 IA</button>
+</div>
+<div id="telaPastas"><div id="listaPastas" class="gridPastas"></div></div>
+<div id="telaFilmes" style="display:none">
+<div style="padding:10px;display:flex;justify-content:space-between;align-items:center"><button onclick="voltarPastas()" style="background:#2a2a2a;color:#fff;border:none;padding:10px 14px;border-radius:10px;font-weight:900">⬅️ VOLTAR</button><span id="tituloPasta" style="color:#FFD700;font-weight:900"></span></div>
+<div style="display:flex;gap:8px;padding:10px;overflow:auto"><button style="background:#00E676;color:#000;padding:10px 14px;border-radius:20px;border:none;font-weight:900" onclick="addVideoCelular()">📱 + VIDEO CELULAR</button><button style="background:#42A5F5;color:#fff;padding:10px 14px;border-radius:20px;border:none;font-weight:900" onclick="addLink()">🔗 + LINK</button></div>
+<div id="listaFilmes" class="gridFilmes"></div>
+</div>
+<button class="fab" onclick="ia()">🤖</button>
+<div class="ads">V85 YOUTUBE DENTRO DO APP</div>
+<div class="barraBottom">
+<button style="background:#00E676" onclick="addVideoCelular()">📱 MEMÓRIA</button>
+<button style="background:#42A5F5;color:#fff" onclick="addLink()">🔗 LINK</button>
+<button style="background:#FFD700" onclick="abrirGenero()">+ GÊNERO</button>
+<button style="background:#FF9800" onclick="backup()">💾 BACKUP</button>
+<button style="background:#00E676" onclick="restaurarClick()">📥 RESTAURAR</button>
+<input type="file" id="inpRestore" accept=".json" style="display:none">
+<button style="background:#ff1744;color:#fff" onclick="resetar()">🗑️ RESET</button>
+</div>
+<div id="mVideo" class="modal"><div class="box"><h3>📱 + VIDEO CELULAR</h3><label>Pasta:</label><select id="vDestino"></select><input id="vNome" placeholder="Nome do filme"><label>📸 CAPA:</label><input type="file" id="vCapaFile" accept="image/*"><img id="vCapaPrev" style="width:100%;height:120px;object-fit:cover;border-radius:12px;display:none;margin:6px 0"><label>🎥 VÍDEO:</label><input type="file" id="vVideoFile" accept="video/*"><video id="vVideoPrev" controls style="display:none;height:140px;width:100%;margin:6px 0"></video><div id="vInfo" style="font-size:11px;color:#00E676"></div><div class="row"><button class="btnCancel" onclick="fechar()">Cancelar</button><button class="btnSave" onclick="salvarVideo()">Salvar</button></div></div></div>
+
+<div id="mGen" class="modal"><div class="box"><h3>📁 + GÊNERO</h3><input id="gNome" placeholder="Ex: YouTube"><input id="gIco" placeholder="Ícone 🔥"><label>Capa:</label><input type="file" id="gCapaFile" accept="image/*"><img id="gCapaPrev" style="width:100%;height:120px;object-fit:cover;border-radius:12px;display:none"><div class="row"><button class="btnCancel" onclick="fechar()">Cancelar</button><button class="btnSave" onclick="salvarGen()">Criar</button></div></div></div>
+
+<div id="mLink" class="modal"><div class="box"><h3>🔗 + LINK</h3><label>Pasta:</label><select id="lDestino"></select><input id="lNome" placeholder="Nome"><input id="lUrl" placeholder="https://youtube.com/watch?v=..."><div class="row"><button class="btnCancel" onclick="fechar()">Cancelar</button><button class="btnSave" onclick="salvarLink()">Salvar</button></div></div></div>
+
+<div id="mPlayer" class="modal"><div class="box"><h3 id="pTit">Player</h3><div id="playerWrap"><video id="player" controls style="width:100%;height:220px;background:#000;border-radius:12px"></video><iframe id="ytPlayer" style="display:none;width:100%;height:220px;border:none;border-radius:12px" allowfullscreen></iframe></div><div class="row"><button class="btnCancel" onclick="fecharPlayer()">Fechar</button></div></div></div>
+
+<div id="mEdit" class="modal"><div class="box"><h3>✏️ Renomear</h3><input id="eNome"><div class="row"><button class="btnCancel" onclick="fechar()">Cancelar</button><button class="btnSave" onclick="confirmEdit()">Salvar</button></div></div></div>
+<script>
+const KEY='G_V85_YOUTUBE';
+let dados={categorias:[],atual:-1}, editIdx=-1, editTipo='', db;
+
+function openDB(){
+ return new Promise(res=>{
+  let req=indexedDB.open('G_V85_YOUTUBE_BLINDADO',5);
+  req.onupgradeneeded=e=>{
+   let d=e.target.result;
+   if(!d.objectStoreNames.contains('dados')) d.createObjectStore('dados',{keyPath:'id'});
+   if(!d.objectStoreNames.contains('videos')) d.createObjectStore('videos',{keyPath:'id'});
+  };
+  req.onsuccess=e=>{ db=e.target.result; res(db); };
+  req.onerror=()=>res(null);
+ });
+}
+async function carregar(){
+ let d=await openDB();
+ if(d){
+  let tx=d.transaction('dados','readonly');
+  let req=tx.objectStore('dados').get('principal');
+  let result=await new Promise(r=>{ req.onsuccess=()=>r(req.result); req.onerror=()=>r(null); });
+  if(result && result.json && result.json.categorias && result.json.categorias.length>0){
+   dados=result.json; if(typeof dados.atual==='undefined') dados.atual=-1;
+   let tx2=d.transaction('videos','readonly');
+   let req2=tx2.objectStore('videos').getAll();
+   let videos=await new Promise(r=>{ req2.onsuccess=()=>r(req2.result); req2.onerror=()=>r([]); });
+   videos.forEach(v=>{ try{ let [ci,fi]=v.id.split('_').map(Number); if(dados.categorias[ci] && dados.categorias[ci].filmes[fi]) dados.categorias[ci].filmes[fi].video=v.data; }catch(e){} });
+   return;
+  }
+ }
+ try{
+  let keys=[KEY,'G_V84_PWA_FINAL','G_V71_IGUAL_BLINDADA_V83','G_V71','G_GRATIDAO_V71','G_V84_PWA_FINAL'];
+  for(let k of keys){ let s=localStorage.getItem(k); if(s){ let j=JSON.parse(s); if(j.categorias && j.categorias.length>0){ dados=j; if(typeof dados.atual==='undefined') dados.atual=-1; await salvar(); return; } } }
+ }catch(e){}
+ dados={categorias:[{nome:'YouTube',icone:'▶️',capa:'',filmes:[],subs:1},{nome:'Ação',icone:'💥',capa:'',filmes:[],subs:1},{nome:'Geral',icone:'📁',capa:'',filmes:[],subs:1}],atual:-1};
+}
+async function salvar(){
+ try{ localStorage.setItem(KEY, JSON.stringify(dados)); localStorage.setItem('G_V84_PWA_FINAL', JSON.stringify(dados)); }catch(e){}
+ if(!db) db=await openDB(); if(!db) return render();
+ let tx=db.transaction(['dados','videos'],'readwrite');
+ tx.objectStore('dados').put({id:'principal',json:dados,ts:Date.now()});
+ dados.categorias.forEach((cat,ci)=>{ cat.filmes.forEach((f,fi)=>{ if(f.video && f.video.length>1000) tx.objectStore('videos').put({id:`${ci}_${fi}`,data:f.video}); }); });
+ render();
+}
+function render(){
+ let listaPastas=document.getElementById('listaPastas');
+ let telaPastas=document.getElementById('telaPastas');
+ let telaFilmes=document.getElementById('telaFilmes');
+ if(dados.atual===-1){
+  telaPastas.style.display='block'; telaFilmes.style.display='none';
+  let q=document.getElementById('busca').value.toLowerCase();
+  let cats=dados.categorias.filter(c=>!q || c.nome.toLowerCase().includes(q));
+  listaPastas.innerHTML=cats.map(c=>{
+   let idx=dados.categorias.indexOf(c);
+   return `<div class="cardPasta"><button class="lixeira" onclick="apagarPasta(${idx})">🗑️</button><div class="emojiBig">${c.icone||'📁'}</div><div><div class="nomePasta">${c.icone} ${c.nome}</div><div class="subPasta">${c.subs||1} subs • ${c.filmes.length} filmes</div><button class="btnAbrir" onclick="entrarPasta(${idx})">📁 ABRIR</button></div></div>`;
+  }).join('');
+ } else {
+  telaPastas.style.display='none'; telaFilmes.style.display='block';
+  let cat=dados.categorias[dados.atual];
+  document.getElementById('tituloPasta').innerText='📁 '+cat.nome;
+  let listaFilmes=document.getElementById('listaFilmes');
+  if(cat.filmes.length==0) listaFilmes.innerHTML=`<div style="text-align:center;color:#666;padding:30px">Nenhum filme em ${cat.nome}</div>`;
+  else listaFilmes.innerHTML=cat.filmes.map((f,i)=>`<div class="cardFilme">${f.capa?`<img src="${f.capa}">`:`<div style="width:60px;height:60px;background:#111;border-radius:10px;display:flex;align-items:center;justify-content:center">🎬</div>`}<div style="flex:1"><b>🎬 ${f.titulo}</b><br><small style="color:#888">${f.info||'link'}</small></div><div style="display:flex;gap:4px"><button style="width:36px;height:36px;border-radius:8px;border:none;background:#FFD700" onclick="playFilme(${i})">▶️</button><button style="width:36px;height:36px;border-radius:8px;border:none;background:#333;color:#fff" onclick="editarFilme(${i})">✏️</button><button style="width:36px;height:36px;border-radius:8px;border:none;background:#333;color:#fff" onclick="apagarFilme(${i})">🗑️</button></div></div>`).join('');
+ }
+}
+function toB64(file,cb){ let r=new FileReader(); r.onload=e=>cb(e.target.result); r.readAsDataURL(file); }
+document.getElementById('vCapaFile').addEventListener('change',e=>{ let f=e.target.files[0]; if(!f)return; toB64(f,b=>{ let im=document.getElementById('vCapaPrev'); im.src=b; im.style.display='block'; im.dataset.b64=b; }); });
+document.getElementById('vVideoFile').addEventListener('change',e=>{
+ let f=e.target.files[0]; if(!f)return;
+ document.getElementById('vInfo').innerText=f.name+' '+(f.size/1024/1024).toFixed(1)+'MB';
+ let url=URL.createObjectURL(f); let v=document.getElementById('vVideoPrev'); v.src=url; v.style.display='block';
+ toB64(f,b=>{ v.dataset.b64=b; });
+});
+document.getElementById('gCapaFile').addEventListener('change',e=>{ let f=e.target.files[0]; if(!f)return; toB64(f,b=>{ let im=document.getElementById('gCapaPrev'); im.src=b; im.style.display='block'; im.dataset.b64=b; }); });
+function entrarPasta(i){ dados.atual=i; salvar(); }
+function voltarPastas(){ dados.atual=-1; salvar(); }
+function abrirGenero(){ document.getElementById('gNome').value=''; document.getElementById('gIco').value=''; let im=document.getElementById('gCapaPrev'); im.style.display='none'; im.dataset.b64=''; document.getElementById('mGen').classList.add('open'); }
+function salvarGen(){ let n=document.getElementById('gNome').value.trim(); if(!n) return alert('Nome'); let ic=document.getElementById('gIco').value||'📁'; let capa=document.getElementById('gCapaPrev').dataset.b64||''; dados.categorias.push({nome:n,icone:ic,capa:capa,filmes:[],subs:1}); dados.atual=dados.categorias.length-1; salvar(); fechar(); }
+function preencherDestinos(){ let html=dados.categorias.map((c,i)=>`<option value="${i}">${c.nome}</option>`).join(''); document.getElementById('vDestino').innerHTML=html; document.getElementById('lDestino').innerHTML=html; if(dados.atual>=0){ document.getElementById('vDestino').value=dados.atual; document.getElementById('lDestino').value=dados.atual; } }
+function addVideoCelular(){ preencherDestinos(); document.getElementById('vNome').value=''; document.getElementById('vCapaPrev').style.display='none'; document.getElementById('vCapaPrev').dataset.b64=''; document.getElementById('vVideoPrev').style.display='none'; document.getElementById('vVideoPrev').dataset.b64=''; document.getElementById('vInfo').innerText=''; document.getElementById('mVideo').classList.add('open'); }
+function salvarVideo(){ let dest=parseInt(document.getElementById('vDestino').value); let n=document.getElementById('vNome').value.trim()||'Filme'; let capa=document.getElementById('vCapaPrev').dataset.b64||''; let video=document.getElementById('vVideoPrev').dataset.b64||''; if(!capa &&!video) return alert('Escolha capa ou vídeo'); dados.categorias[dest].filmes.push({titulo:n,capa:capa,video:video,link:'local',info:'blindado V85'}); dados.atual=dest; salvar(); fechar(); }
+function addLink(){ preencherDestinos(); document.getElementById('lNome').value=''; document.getElementById('lUrl').value=''; document.getElementById('mLink').classList.add('open'); }
+function salvarLink(){ let dest=parseInt(document.getElementById('lDestino').value); let n=document.getElementById('lNome').value.trim(); let u=document.getElementById('lUrl').value.trim(); if(!n||!u) return alert('Preencha'); dados.categorias[dest].filmes.push({titulo:n,capa:'',video:'',link:u,info:'YouTube'}); dados.atual=dest; salvar(); fechar(); }
+function getYouTubeId(url){
+  try{
+   if(url.includes('youtu.be/')) return url.split('youtu.be/')[1].split(/[?&]/)[0];
+   if(url.includes('v=')) return url.split('v=')[1].split('&')[0];
+   return url.split('/').pop().split('?')[0];
+  }catch(e){ return null; }
+}
+function playFilme(i){
+ let f=dados.categorias[dados.atual].filmes[i];
+ document.getElementById('pTit').innerText=f.titulo;
+ let p=document.getElementById('player');
+ let yt=document.getElementById('ytPlayer');
+ if(f.link && (f.link.includes('youtube.com') || f.link.includes('youtu.be'))){
+  let id=getYouTubeId(f.link);
+  if(id){
+   p.style.display='none'; p.pause();
+   yt.style.display='block';
+   yt.src='https://www.youtube.com/embed/'+id+'?autoplay=1';
+   document.getElementById('mPlayer').classList.add('open');
+   return;
+  }
+ }
+ if(f.video){
+  yt.style.display='none'; yt.src='';
+  p.style.display='block';
+  p.src=f.video;
+  document.getElementById('mPlayer').classList.add('open');
+  p.play();
+ } else if(f.link && f.link!='local'){
+  window.open(f.link,'_blank');
+ } else alert('Sem vídeo');
+}
+function fecharPlayer(){
+ let p=document.getElementById('player'); p.pause(); p.src='';
+ let yt=document.getElementById('ytPlayer'); yt.src=''; yt.style.display='none'; p.style.display='block';
+ document.getElementById('mPlayer').classList.remove('open');
+}
+function editarFilme(i){ editIdx=i; editTipo='filme'; document.getElementById('eNome').value=dados.categorias[dados.atual].filmes[i].titulo; document.getElementById('mEdit').classList.add('open'); }
+function confirmEdit(){ let n=document.getElementById('eNome').value.trim(); if(!n) return; if(editTipo==='filme') dados.categorias[dados.atual].filmes[editIdx].titulo=n; else dados.categorias[editIdx].nome=n; salvar(); fechar(); }
+function apagarFilme(i){ if(confirm('Apagar '+dados.categorias[dados.atual].filmes[i].titulo+'?')){ dados.categorias[dados.atual].filmes.splice(i,1); salvar(); } }
+function apagarPasta(i){ if(confirm('Apagar pasta '+dados.categorias[i].nome+'?')){ dados.categorias.splice(i,1); if(dados.atual===i) dados.atual=-1; salvar(); } }
+function fechar(){ document.querySelectorAll('.modal').forEach(m=>{ if(m.id!='mPlayer') m.classList.remove('open'); }); }
+function filtrarPastas(){ render(); }
+function backup(){ let b=new Blob([JSON.stringify(dados)],{type:'application/json'}); let a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download='G-V85-YOUTUBE-'+Date.now()+'.json'; a.click(); }
+function restaurarClick(){ document.getElementById('inpRestore').click(); }
+document.getElementById('inpRestore').addEventListener('change',e=>{
+ let f=e.target.files[0]; if(!f)return; let r=new FileReader(); r.onload=async()=>{ try{ let j=JSON.parse(r.result); if(j.categorias){ dados=j; await salvar(); alert('✅ Restaurado!'); } }catch(err){ alert('Erro'); } }; r.readAsText(f);
+});
+function resetar(){ if(confirm('RESET?')&&confirm('Apagar TUDO?')){ localStorage.clear(); sessionStorage.clear(); indexedDB.deleteDatabase('G_V85_YOUTUBE_BLINDADO'); location.reload(); } }
+function convidar(){ window.open('https://wa.me/?text='+encodeURIComponent('Meu app G Gratidão V85 '+location.href),'_blank'); }
+function apoiar(){ alert('PIX bancogratidao.oficial@gmail.com'); }
+function ia(){ alert('V85 YouTube dentro do app funcionando!'); }
+(async()=>{ await carregar(); render(); })();
+</script>
+</body>
+</html>
