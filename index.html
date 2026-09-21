@@ -1,0 +1,40 @@
+function playFilme(i){
+ let f=dados.categorias[dados.atual].filmes[i];
+ document.getElementById('pTit').innerText=f.titulo;
+ let p=document.getElementById('player');
+ // Se for YouTube, abre embed dentro do app
+ if(f.link && f.link.includes('youtube.com') || f.link.includes('youtu.be')){
+  let id = f.link.split('v=')[1] || f.link.split('/').pop();
+  if(id.includes('&')) id = id.split('&')[0];
+  // cria iframe do youtube
+  let box = document.querySelector('#mPlayer.box');
+  if(!document.getElementById('ytPlayer')){
+   let iframe = document.createElement('iframe');
+   iframe.id='ytPlayer';
+   iframe.style.width='100%';
+   iframe.style.height='220px';
+   iframe.style.borderRadius='12px';
+   iframe.allowFullscreen=true;
+   p.style.display='none';
+   box.insertBefore(iframe, p);
+  }
+  document.getElementById('ytPlayer').style.display='block';
+  document.getElementById('ytPlayer').src='https://www.youtube.com/embed/'+id;
+  document.getElementById('mPlayer').classList.add('open');
+  return;
+ }
+ if(f.video){
+  if(document.getElementById('ytPlayer')) document.getElementById('ytPlayer').style.display='none';
+  p.style.display='block';
+  p.src=f.video;
+  document.getElementById('mPlayer').classList.add('open');
+  p.play();
+ } else if(f.link && f.link!='local'){
+  window.open(f.link,'_blank');
+ } else alert('Sem vídeo');
+}
+function fecharPlayer(){
+ document.getElementById('player').pause();
+ if(document.getElementById('ytPlayer')) document.getElementById('ytPlayer').src='';
+ document.getElementById('mPlayer').classList.remove('open');
+}
