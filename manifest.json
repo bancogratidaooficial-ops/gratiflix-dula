@@ -1,7 +1,7 @@
 {
-  "name": "DolaFilmes 🎬",
-  "short_name": "DolaFilmes",
-  "description": "Sua coleção especial de vídeos com áudio e controles completos",
+  "name": "Gratiflix 🎬",
+  "short_name": "Gratiflix",
+  "description": "Convide e compartilhe e tenha ganhos na sua carteira! Instale e impulsione seus ganhos vendo vídeos — quanto mais você assistir, mais você ganha.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0f0f1a",
@@ -12,7 +12,7 @@
   "icons": [
     {
       "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH5gMVkDEwR1PKggAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAADGSURBVnR3Z2BZbF9o2zUaDGgMZjh0AAMGj/7z/feQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8z/8AAAAASUVORK5CYII=",
-      "sizes": "any",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
