@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#1a1a2e">
-  <meta name="description" content="DolaFilmes — Sua coleção de vídeos favorita">
+  <meta name="theme-color" content="#e94560">
+  <meta name="description" content="DolaFilmes — Sua coleção especial de vídeos">
   <title>DolaFilmes 🎬</title>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH5gMVkDEwR1PKggAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAADGSURBVnR3Z2BZbF9o2zUaDGgMZjh0AAMGj/7z/feQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8z/8AAAAASUVORK5CYII=">
@@ -13,8 +13,8 @@
     :root{--bg:#0f0f1a;--card:#1a1a2e;--accent:#e94560;--text:#fff;--sub:#aaa}
     body{background:var(--bg);color:var(--text);min-height:100vh}
     header{background:linear-gradient(135deg,#1a1a2e,#16213e);padding:1.2rem;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.5)}
-    header h1{font-size:1.4rem;color:var(--accent)}
-    header p{font-size:.9rem;color:var(--sub);margin-top:.3rem}
+    header h1{font-size:1.5rem;color:var(--accent);margin-bottom:.3rem}
+    header p{font-size:.9rem;color:var(--sub)}
     .search-bar{max-width:500px;margin:1rem auto;padding:0 1rem}
     .search-bar input{width:100%;padding:.8rem 1rem;border-radius:30px;border:none;background:rgba(255,255,255,.1);color:#fff;font-size:1rem;outline:none}
     .search-bar input::placeholder{color:var(--sub)}
@@ -23,39 +23,47 @@
     .cat-btn.active,.cat-btn:hover{background:var(--accent);color:#fff}
     .container{padding:1rem;max-width:1400px;margin:0 auto}
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
-    .card{background:var(--card);border-radius:12px;overflow:hidden;transition:.3s;cursor:pointer}
-    .card:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(233,69,96,.2)}
-    .thumb{width:100%;aspect-ratio:16/9;object-fit:cover;background:#222}
+    .card{background:var(--card);border-radius:12px;overflow:hidden;transition:.3s;cursor:pointer;border:2px solid transparent}
+    .card:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(233,69,96,.2);border-color:var(--accent)}
+    .thumb{width:100%;aspect-ratio:16/9;object-fit:cover;background:#222;display:block}
     .info{padding:1rem}
-    .info h3{font-size:1rem;margin-bottom:.3rem}
-    .info p{font-size:.85rem;color:var(--sub)}
-    .info .cat-tag{display:inline-block;background:rgba(233,69,96,.2);color:var(--accent);padding:.15rem .5rem;border-radius:10px;font-size:.75rem;margin-top:.5rem}
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:200;padding:1rem}
+    .info h3{font-size:1rem;margin-bottom:.4rem;line-height:1.3}
+    .info p{font-size:.85rem;color:var(--sub);margin-bottom:.5rem}
+    .info .cat-tag{display:inline-block;background:rgba(233,69,96,.2);color:var(--accent);padding:.2rem .6rem;border-radius:12px;font-size:.75rem;font-weight:600}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;z-index:200;padding:1rem}
     .modal.show{display:flex}
-    .modal-box{background:var(--card);border-radius:12px;max-width:900px;width:100%;max-height:90vh;overflow:hidden}
-    .modal-header{padding:1rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #333}
+    .modal-box{background:var(--card);border-radius:12px;max-width:900px;width:100%;max-height:92vh;overflow:hidden;display:flex;flex-direction:column}
+    .modal-header{padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #333;flex-shrink:0}
     .modal-header h2{font-size:1.1rem}
-    .close-btn{background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
-    .video-container{padding:1rem}
-    .video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px}
-    .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
-    .modal-desc{padding:0 1rem 1rem;color:var(--sub);font-size:.9rem}
-    .install-btn{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--accent);color:#fff;border:none;padding:.7rem 1.2rem;border-radius:30px;font-weight:bold;cursor:pointer;box-shadow:0 4px 15px rgba(233,69,96,.4);z-index:150;display:none}
+    .close-btn{background:#333;border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
+    .close-btn:hover{background:var(--accent)}
+    .video-container{padding:0;position:relative;width:100%;aspect-ratio:16/9;background:#000;flex-shrink:0}
+    .video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+    .modal-body{padding:1rem 1.2rem;overflow-y:auto;max-height:40vh}
+    .modal-desc{color:var(--sub);font-size:.9rem;line-height:1.6;margin-bottom:1rem}
+    .modal-controls{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1rem}
+    .ctrl-btn{padding:.6rem 1rem;border-radius:8px;border:none;font-size:.85rem;cursor:pointer;transition:.2s;font-weight:500}
+    .ctrl-btn.primary{background:var(--accent);color:#fff}
+    .ctrl-btn.secondary{background:#333;color:#fff}
+    .ctrl-btn:hover{opacity:.9}
+    .install-btn{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--accent);color:#fff;border:none;padding:.8rem 1.2rem;border-radius:30px;font-weight:bold;cursor:pointer;box-shadow:0 4px 15px rgba(233,69,96,.4);z-index:150;display:none}
     .install-btn.show{display:block}
-    .empty{text-align:center;color:var(--sub);padding:3rem}
+    .empty{text-align:center;color:var(--sub);padding:4rem 2rem}
+    .empty svg{width:64px;height:64px;margin-bottom:1rem;opacity:.3}
+    .volume-hint{font-size:.8rem;color:#888;margin-top:.5rem;font-style:italic}
   </style>
 </head>
 <body>
 
 <header>
   <h1>🎬 DolaFilmes</h1>
-  <p>Sua coleção especial de vídeos</p>
+  <p>Sua coleção especial de vídeos — com áudio e controle completo</p>
 </header>
 
 <button class="install-btn" id="installBtn">📥 Instalar App</button>
 
 <div class="search-bar">
-  <input type="text" id="searchInput" placeholder="🔍 Buscar por título...">
+  <input type="text" id="searchInput" placeholder="🔍 Buscar por título ou categoria...">
 </div>
 
 <div class="categories" id="categories">
@@ -70,52 +78,59 @@
 <div class="modal" id="videoModal">
   <div class="modal-box">
     <div class="modal-header">
-      <h2 id="modalTitle">Título</h2>
+      <h2 id="modalTitle">Título do Vídeo</h2>
       <button class="close-btn" id="closeModal">&times;</button>
     </div>
     <div class="video-container">
-      <div class="video-wrapper">
-        <iframe id="videoFrame" src="" allowfullscreen></iframe>
-      </div>
+      <iframe id="videoFrame" src="" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
     </div>
-    <p class="modal-desc" id="modalDesc"></p>
+    <div class="modal-body">
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-controls">
+        <button class="ctrl-btn secondary" onclick="copiarLink()">📋 Copiar Link</button>
+        <button class="ctrl-btn secondary" onclick="compartilharVideo()">🔗 Compartilhar</button>
+        <button class="ctrl-btn secondary" onclick="abrirNoYoutube()">▶️ Abrir no YouTube</button>
+        <button class="ctrl-btn primary" onclick="reproduzirNovamente()">🔄 Reproduzir</button>
+      </div>
+      <p class="volume-hint">🔊 Dica: O volume é controlado diretamente no player do YouTube — clique no ícone de alto-falante dentro do vídeo para ativar o som</p>
+    </div>
   </div>
 </div>
 
 <script>
-// === BANCO DE DADOS COMPLETO ATUALIZADO ===
+// === BANCO DE DADOS COMPLETO ===
 const filmesBase = [
   // SUPER MAN
-  {t:"Super Man 1",i:"plaU0sa1MQ8",p:"Super Man",l:"O homem de aço"},
-  {t:"Super Man 2",i:"Rw3Tv8WAd1w",p:"Super Man",l:"Poder e responsabilidade"},
-  {t:"Super Man 3",i:"g-Nyi9dOy6E",p:"Super Man",l:"Força com humildade"},
-  {t:"Super Man 4",i:"nul6lTbu3oA",p:"Super Man",l:"Justiça para todos"},
-  {t:"Super Man 5",i:"6lcoN1wEwfY",p:"Super Man",l:"O verdadeiro herói"},
-  {t:"Super Man 6",i:"t0EDs_Em5SA",p:"Super Man",l:"Lutando pelo bem"},
+  {t:"Super Man 1 — O Homem de Aço",i:"plaU0sa1MQ8",p:"Super Man",l:"O verdadeiro herói usa sua força para proteger os fracos"},
+  {t:"Super Man 2 — A Força e a Responsabilidade",i:"Rw3Tv8WAd1w",p:"Super Man",l:"Com grandes poderes vem grandes responsabilidades"},
+  {t:"Super Man 3 — Humildade",i:"g-Nyi9dOy6E",p:"Super Man",l:"A verdadeira força vem da humildade"},
+  {t:"Super Man 4 — Justiça",i:"nul6lTbu3oA",p:"Super Man",l:"A justiça deve ser para todos, sem distinção"},
+  {t:"Super Man 5 — O Coração de Herói",i:"6lcoN1wEwfY",p:"Super Man",l:"Ser herói é sobre o que você faz, não o que você tem"},
+  {t:"Super Man 6 — Lutar pelo Bem",i:"t0EDs_Em5SA",p:"Super Man",l:"Nunca desista do que é certo, mesmo quando é difícil"},
 
   // TURMA DA MÔNICA
-  {t:"Turma da Mônica 1",i:"BbYLSzrUAwY",p:"Turma da Mônica",l:"Alegria e amizade"},
-  {t:"Turma da Mônica 2",i:"wgg_Ppx9Q6w",p:"Turma da Mônica",l:"Diversão em família"},
-  {t:"Turma da Mônica 3",i:"b3wM8AGKMBY",p:"Turma da Mônica",l:"Amigos são tesouros"},
-  {t:"Turma da Mônica 4",i:"xsfVi_0T2ag",p:"Turma da Mônica",l:"Crescer e aprender"},
-  {t:"Turma da Mônica 15",i:"kxSeC7DxHtQ",p:"Turma da Mônica",l:"Gratidão e alegria"},
-  {t:"Turma da Mônica 16",i:"h8TpRa3oMZM",p:"Turma da Mônica",l:"O melhor da vida"},
+  {t:"Turma da Mônica 1 — Alegria e Amizade",i:"BbYLSzrUAwY",p:"Turma da Mônica",l:"A amizade é o presente mais valioso que podemos ter"},
+  {t:"Turma da Mônica 2 — Diversão em Família",i:"wgg_Ppx9Q6w",p:"Turma da Mônica",l:"O melhor lugar do mundo é dentro de um abraço em família"},
+  {t:"Turma da Mônica 3 — Amigos são Tesouros",i:"b3wM8AGKMBY",p:"Turma da Mônica",l:"Quem tem um amigo, tem um tesouro que não tem preço"},
+  {t:"Turma da Mônica 4 — Crescer e Aprender",i:"xsfVi_0T2ag",p:"Turma da Mônica",l:"Errar é permitido, desde que aprendamos com os erros"},
+  {t:"Turma da Mônica 15 — Gratidão",i:"kxSeC7DxHtQ",p:"Turma da Mônica",l:"Ser grato transforma o que temos em suficiente"},
+  {t:"Turma da Mônica 16 — O Melhor da Vida",i:"h8TpRa3oMZM",p:"Turma da Mônica",l:"O melhor da vida não são coisas, são momentos com quem amamos"},
 
   // FILMES
-  {t:"Filme 1",i:"lpeIKPBsuLc",p:"Filmes",l:"Assista e inspire-se"},
-  {t:"Filme 2",i:"lIZdF-Yf-ig",p:"Filmes",l:"Cada dia uma nova história"},
+  {t:"Filme 1 — Aventura e Inspiração",i:"lpeIKPBsuLc",p:"Filmes",l:"Cada história nos ensina algo novo sobre nós mesmos"},
+  {t:"Filme 2 — Uma Nova História",i:"lIZdF-Yf-ig",p:"Filmes",l:"Cada dia é uma nova página na história da nossa vida"},
 
   // CHAVES
-  {t:"Chaves 1",i:"NdQn3sOGAB4",p:"Chaves",l:"Rir é o melhor remédio"},
-  {t:"Chaves 2",i:"4RNI-qPzMu4",p:"Chaves",l:"Amizade verdadeira"},
-  {t:"Chaves 3",i:"nON_DKL5asw",p:"Chaves",l:"Paz e alegria"},
-  {t:"Chaves 10",i:"sdAEvEdxXLI",p:"Chaves",l:"O bom coração"},
+  {t:"Chaves 1 — Rir é o Melhor Remédio",i:"NdQn3sOGAB4",p:"Chaves",l:"Um sorriso custa pouco e faz muito bem a todos"},
+  {t:"Chaves 2 — Amizade Verdadeira",i:"4RNI-qPzMu4",p:"Chaves",l:"Amigos de verdade estão nas horas boas e ruins"},
+  {t:"Chaves 3 — Paz e Alegria",i:"nON_DKL5asw",p:"Chaves",l:"A paz começa dentro de nós e se espalha ao redor"},
+  {t:"Chaves 10 — Um Bom Coração",i:"sdAEvEdxXLI",p:"Chaves",l:"Não importa onde você mora, importa o que você tem no coração"},
 
   // DORAMAS
-  {t:"Doramas 1",i:"gaPE0HTgAP0",p:"Doramas",l:"Amor e esperança"},
+  {t:"Doramas 1 — Amor e Esperança",i:"gaPE0HTgAP0",p:"Doramas",l:"O amor e a esperança são as forças mais poderosas do mundo"},
 
   // LOONEY TUNES
-  {t:"Looney Tunes 1",i:"CuJ1xMVqY0I",p:"Looney Tunes",l:"Rir sem parar"}
+  {t:"Looney Tunes 1 — Rir Sem Parar",i:"CuJ1xMVqY0I",p:"Looney Tunes",l:"Rir é a melhor forma de aproveitar a vida!"}
 ];
 
 // Elementos
@@ -132,6 +147,7 @@ const installBtn = document.getElementById('installBtn');
 let categorias = [...new Set(filmesBase.map(f=>f.p))];
 let categoriaAtiva = 'all';
 let busca = '';
+let filmeAtual = null;
 let deferredPrompt;
 
 // Montar botões de categoria
@@ -143,15 +159,27 @@ categorias.forEach(cat=>{
   categoriesEl.appendChild(btn);
 });
 
-// Renderizar
+// Renderizar lista de filmes
 function render(){
   let lista = filmesBase;
   if(categoriaAtiva !== 'all') lista = lista.filter(f=>f.p === categoriaAtiva);
-  if(busca) lista = lista.filter(f=>f.t.toLowerCase().includes(busca.toLowerCase()));
+  if(busca) lista = lista.filter(f=>
+    f.t.toLowerCase().includes(busca.toLowerCase()) ||
+    f.p.toLowerCase().includes(busca.toLowerCase()) ||
+    f.l.toLowerCase().includes(busca.toLowerCase())
+  );
 
   grid.innerHTML = '';
   if(lista.length === 0){
-    grid.innerHTML = '<p class="empty">Nenhum vídeo encontrado 😕</p>';
+    grid.innerHTML = `
+      <div class="empty">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4"/>
+        </svg>
+        <h3>Nenhum vídeo encontrado 😕</h3>
+        <p>Tente outro termo de busca ou selecione uma categoria diferente</p>
+      </div>
+    `;
     return;
   }
   lista.forEach(filme=>{
@@ -170,21 +198,59 @@ function render(){
   });
 }
 
+// Abrir vídeo no modal — COM ÁUDIO E CONTROLES
 function abrirVideo(filme){
+  filmeAtual = filme;
   modalTitle.textContent = filme.t;
-  modalDesc.textContent = filme.l + ' — Categoria: ' + filme.p;
-  videoFrame.src = `https://www.youtube-nocookie.com/embed/${filme.i}?rel=0`;
+  modalDesc.textContent = filme.l;
+  // ✅ Parâmetros corretos para áudio e controles
+  videoFrame.src = `https://www.youtube-nocookie.com/embed/${filme.i}?autoplay=1&rel=0&modestbranding=0&controls=1&enablejsapi=1&origin=${window.location.origin}`;
   modal.classList.add('show');
   document.body.style.overflow = 'hidden';
 }
 
 function fecharModal(){
   modal.classList.remove('show');
-  videoFrame.src = '';
+  videoFrame.src = ''; // Para o vídeo completamente
+  filmeAtual = null;
   document.body.style.overflow = '';
 }
 
-// Eventos
+// 🎯 Funções extras de controle
+function copiarLink(){
+  if(!filmeAtual) return;
+  const link = `https://www.youtube.com/watch?v=${filmeAtual.i}`;
+  navigator.clipboard.writeText(link)
+    .then(()=>alert('✅ Link copiado com sucesso!'))
+    .catch(()=>prompt('Copie este link:',link));
+}
+
+function compartilharVideo(){
+  if(!filmeAtual) return;
+  const link = `https://www.youtube.com/watch?v=${filmeAtual.i}`;
+  if(navigator.share){
+    navigator.share({
+      title: filmeAtual.t,
+      text: filmeAtual.l,
+      url: link
+    });
+  }else{
+    copiarLink();
+  }
+}
+
+function abrirNoYoutube(){
+  if(!filmeAtual) return;
+  window.open(`https://www.youtube.com/watch?v=${filmeAtual.i}`, '_blank');
+}
+
+function reproduzirNovamente(){
+  if(!filmeAtual) return;
+  videoFrame.src = '';
+  setTimeout(()=>abrirVideo(filmeAtual), 100);
+}
+
+// Eventos de navegação
 categoriesEl.addEventListener('click',e=>{
   if(!e.target.classList.contains('cat-btn')) return;
   document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
@@ -201,7 +267,7 @@ searchInput.addEventListener('input',e=>{
 closeModal.addEventListener('click',fecharModal);
 modal.addEventListener('click',e=>e.target === modal && fecharModal());
 
-// PWA Instalação
+// PWA — Instalação
 window.addEventListener('beforeinstallprompt',e=>{
   e.preventDefault();
   deferredPrompt = e;
@@ -216,15 +282,16 @@ installBtn.addEventListener('click',async()=>{
   deferredPrompt = null;
 });
 
-// Registrar Service Worker
+// Registrar Service Worker — Funciona offline
 if('serviceWorker' in navigator){
   window.addEventListener('load',()=>{
     navigator.serviceWorker.register('sw.js')
-      .then(()=>console.log('✅ Service Worker registrado'))
-      .catch(err=>console.log('⚠️ SW não registrado:',err));
+      .then(reg=>console.log('✅ Service Worker registrado — App funciona offline!',reg.scope))
+      .catch(err=>console.log('⚠️ SW não registrado:',err.message));
   });
 }
 
+// Iniciar
 render();
 </script>
 </body>
