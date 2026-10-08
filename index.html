@@ -173,11 +173,8 @@ function render(){
   if(lista.length === 0){
     grid.innerHTML = `
       <div class="empty">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4"/>
-        </svg>
         <h3>Nenhum vídeo encontrado 😕</h3>
-        <p>Tente outro termo de busca ou selecione uma categoria diferente</p>
+        <p>Pressione <strong>Enter</strong> para buscar "${busca}" no YouTube</p>
       </div>
     `;
     return;
@@ -198,25 +195,24 @@ function render(){
   });
 }
 
-// Abrir vídeo no modal — COM ÁUDIO E CONTROLES
+// Abrir vídeo no modal
 function abrirVideo(filme){
   filmeAtual = filme;
   modalTitle.textContent = filme.t;
   modalDesc.textContent = filme.l;
-  // ✅ Parâmetros corretos para áudio e controles
-  videoFrame.src = `https://www.youtube-nocookie.com/embed/${filme.i}?autoplay=1&rel=0&modestbranding=0&controls=1&enablejsapi=1&origin=${window.location.origin}`;
+  videoFrame.src = `https://www.youtube-nocookie.com/embed/${filme.i}?autoplay=1&rel=0&controls=1&enablejsapi=1&origin=${window.location.origin}`;
   modal.classList.add('show');
   document.body.style.overflow = 'hidden';
 }
 
 function fecharModal(){
   modal.classList.remove('show');
-  videoFrame.src = ''; // Para o vídeo completamente
+  videoFrame.src = '';
   filmeAtual = null;
   document.body.style.overflow = '';
 }
 
-// 🎯 Funções extras de controle
+// � Funções extras de controle
 function copiarLink(){
   if(!filmeAtual) return;
   const link = `https://www.youtube.com/watch?v=${filmeAtual.i}`;
@@ -229,11 +225,7 @@ function compartilharVideo(){
   if(!filmeAtual) return;
   const link = `https://www.youtube.com/watch?v=${filmeAtual.i}`;
   if(navigator.share){
-    navigator.share({
-      title: filmeAtual.t,
-      text: filmeAtual.l,
-      url: link
-    });
+    navigator.share({title: filmeAtual.t, text: filmeAtual.l, url: link});
   }else{
     copiarLink();
   }
@@ -259,9 +251,24 @@ categoriesEl.addEventListener('click',e=>{
   render();
 });
 
-searchInput.addEventListener('input',e=>{
+// ✅ Busca ao digitar
+searchInput.addEventListener('input', e => {
   busca = e.target.value;
   render();
+});
+
+// ✅ Busca no YouTube quando apertar ENTER
+searchInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && busca.trim()) {
+    const lista = filmesBase.filter(f=>
+      f.t.toLowerCase().includes(busca.toLowerCase()) ||
+      f.p.toLowerCase().includes(busca.toLowerCase()) ||
+      f.l.toLowerCase().includes(busca.toLowerCase())
+    );
+    if (lista.length === 0) {
+      window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(busca)}`, '_blank');
+    }
+  }
 });
 
 closeModal.addEventListener('click',fecharModal);
@@ -282,14 +289,15 @@ installBtn.addEventListener('click',async()=>{
   deferredPrompt = null;
 });
 
-// Registrar Service Worker — Funciona offline
+// Registrar Service Worker
 if('serviceWorker' in navigator){
   window.addEventListener('load',()=>{
     navigator.serviceWorker.register('sw.js')
-      .then(reg=>console.log('✅ Service Worker registrado — App funciona offline!',reg.scope))
+      .then(reg=>console.log('✅ Service Worker registrado!',reg.scope))
       .catch(err=>console.log('⚠️ SW não registrado:',err.message));
   });
 }
+
 
 // Iniciar
 render();
