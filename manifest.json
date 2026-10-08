@@ -1,0 +1,20 @@
+{
+  "name": "DolaFilmes 🎬",
+  "short_name": "DolaFilmes",
+  "description": "Sua coleção especial de vídeos com áudio e controles completos",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f0f1a",
+  "theme_color": "#e94560",
+  "orientation": "portrait-primary",
+  "scope": "./",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH5gMVkDEwR1PKggAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAADGSURBVnR3Z2BZbF9o2zUaDGgMZjh0AAMGj/7z/feQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8zQbDpE8z/8AAAAASUVORK5CYII=",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
